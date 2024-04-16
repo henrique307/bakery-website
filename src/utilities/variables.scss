@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap");
+
+$black: #212529;
+$pink: #e47277;
+$gray: #83868c;
+$font-playfair: "Playfair Display", serif;
+
+h1.section-title {
+    position: relative;
+    text-transform: uppercase;
+    margin: 0 auto;
+    font-family: $font-playfair;
+    font-weight: 700;
+    letter-spacing: 5px;
+    margin-bottom: 3rem;
+    padding: 40px;
+    padding-bottom: 20px;
+    width: fit-content;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 5px;
+      width: 100%;
+      background: radial-gradient(black, pink, transparent);
+    }
+  }
