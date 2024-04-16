@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/bakery-website/static/css/main.2523ba9b.css",
+    "main.js": "/bakery-website/static/js/main.d2e20f6c.js",
+    "index.html": "/bakery-website/index.html",
+    "main.2523ba9b.css.map": "/bakery-website/static/css/main.2523ba9b.css.map",
+    "main.d2e20f6c.js.map": "/bakery-website/static/js/main.d2e20f6c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2523ba9b.css",
+    "static/js/main.d2e20f6c.js"
+  ]
+}
