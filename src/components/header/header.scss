@@ -51,11 +51,9 @@ section.header {
     .icons-container {
       display: flex;
       align-items: center;
-      .icon {
-        background-clip: text;
-        &.icon-lupa:hover {
-          background-color: red;
-        }
+
+      .carrinho-container {
+        width: auto;
       }
     }
 

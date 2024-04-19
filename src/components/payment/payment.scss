@@ -1,0 +1,203 @@
+@import "../../utilities/variables.scss";
+
+section.payment {
+  div.payment-container {
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 50px;
+
+    @media (width < 660px) {
+      width: 100%;
+      padding: 0 20px;
+    }
+
+    span.back {
+      cursor: pointer;
+      position: relative;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 2px;
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+      &::before {
+        content: "";
+        position: absolute;
+        left: -15px;
+        top: 50%;
+        width: 5px;
+        height: 5px;
+        border-bottom: 1px black solid;
+        border-left: 1px black solid;
+        transform: rotate(45deg) translate(0, -50%);
+      }
+    }
+
+    h1.payment-title {
+      margin: 40px 0;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    div.cart-container {
+      display: flex;
+      gap: 50px;
+      width: 100%;
+
+      @media (width < 1400px) {
+        flex-direction: column;
+        div.cart-total {
+          max-width: unset;
+        }
+      }
+
+      div.cart-list {
+        display: flex;
+        gap: 10px;
+        width: 100%;
+        height: 400px;
+        overflow: auto;
+        flex-direction: column;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
+
+        .cart-item {
+          display: flex;
+          justify-content: space-between;
+          gap: 20px;
+
+          img {
+            margin-right: 20px;
+            max-width: 150px;
+            max-height: 150px;
+            object-fit: cover;
+            object-position: center;
+          }
+
+          .item-info {
+            display: flex;
+            width: 200px;
+            margin-right: auto;
+            flex-direction: column;
+            h1.info-name {
+              font-weight: 500;
+            }
+
+            span.info-id {
+              color: $gray;
+            }
+
+            span.info-price {
+              margin-top: 30px;
+              color: $pink;
+            }
+          }
+
+          .item-total {
+            display: flex;
+            flex-direction: column;
+            align-items: right;
+            span.total {
+              text-wrap: nowrap;
+              font-weight: 500;
+            }
+
+            div.item-qtd {
+              margin-top: 50px;
+              margin-left: auto;
+              input.qtd {
+                  width: 50px;
+                  margin-left: auto;
+              }
+            }
+          }
+
+          .item-qtd {
+          }
+        }
+      }
+
+      div.cart-total {
+        width: 100%;
+        max-width: 400px;
+
+        @media (width < 1400px) {
+          max-width: unset;
+        }
+        h1.total-title {
+          font-weight: 600;
+          text-transform: uppercase;
+          padding: 20px 0;
+          padding-top: 0;
+          margin-bottom: 15px;
+          border-bottom: 2px solid rgb(211, 211, 211);
+        }
+
+        div.total-summary {
+          display: flex;
+          flex-direction: column;
+          border-bottom: 2px solid rgb(147, 147, 147);
+          padding-bottom: 10px;
+          margin-bottom: 10px;
+          gap: 5px;
+
+          div.summary-item {
+            padding: 5px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            div.name-qtd {
+              display: flex;
+              flex-direction: column;
+              span.summary-qtd {
+                color: $gray;
+              }
+
+              span.summary-name {
+                font-weight: 500;
+              }
+            }
+
+            span.summary-price {
+              font-weight: 500;
+            }
+          }
+        }
+
+        div.total-container {
+          display: flex;
+          margin: 20px 0;
+          justify-content: space-between;
+
+          span {
+            font-weight: 600;
+          }
+        }
+
+        button.action-button {
+          background-color: black;
+          border: black 2px solid;
+          color: white;
+          font-weight: 500;
+          text-transform: uppercase;
+          letter-spacing: 3px;
+          padding: 10px 20px;
+          margin-top: 10px;
+          width: 100%;
+          transition: 0.3s all ease-in-out;
+
+          &:hover {
+            background-color: transparent;
+            color: black;
+          }
+        }
+      }
+    }
+  }
+}

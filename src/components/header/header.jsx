@@ -1,15 +1,15 @@
 import { useState, useContext } from "react";
 import { Lupa, Carrinho, SideBar, Coracao } from "../../icons";
-import { SideContentComponent } from "../utils/sideContent/SideContent.jsx"
-import { CarrinhoContext } from "../utils/context/carrinho.context.js";
-import {CarrinhoComponent} from "./components/carrinho/carrinho.jsx"
+import { SideContentComponent } from "../utils/sideContent/SideContent.jsx";
+import { CarrinhoComponent } from "./components/carrinho/carrinho.jsx";
+// import { FavComponent } from "./components/fav/fav.jsx";
 import { Logo } from "../utils/logo/Logo.component.jsx";
 import "./header.scss";
 
 export function HeaderComponent() {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [carrinhoTabOpen, setCarrinhoTabOpen] = useState(false);
-  const [carrinho] = useContext(CarrinhoContext);
+  const [favTabOpen, setFavTabOpen] = useState(false);
 
   return (
     <section className="header w-full p-5 text-white">
@@ -30,12 +30,21 @@ export function HeaderComponent() {
           onClick={() => setMobileNavOpen(!mobileNavOpen)}
           className={`${mobileNavOpen ? "" : "hidden"} mobile-overlay`}
         ></div>
-        <SideContentComponent open={carrinhoTabOpen} setOpen={setCarrinhoTabOpen}>
-          <CarrinhoComponent carrinho={carrinho} setCarrinho={setCarrinhoTabOpen}/>
+        <SideContentComponent
+          open={carrinhoTabOpen}
+          setOpen={setCarrinhoTabOpen}
+        >
+          <CarrinhoComponent />
         </SideContentComponent>
+        {/* <SideContentComponent
+          open={favTabOpen}
+          setOpen={setFavTabOpen}
+        >
+          <FavComponent />
+        </SideContentComponent> */}
         <div className="icons-container flex">
           <Lupa />
-          <Carrinho onClick={() => setCarrinhoTabOpen(true)}/>
+          <Carrinho onClick={() => setCarrinhoTabOpen(true)} />
           <Coracao />
         </div>
       </div>

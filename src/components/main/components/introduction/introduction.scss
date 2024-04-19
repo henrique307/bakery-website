@@ -1,115 +1,116 @@
 @import "../../../../utilities/variables.scss";
 
 section.intruduction {
-    width: 100%;
+  width: 100%;
 
-    .splide {
-        position: relative;
+  .splide {
+    position: relative;
+    min-height: 35rem;
+
+    .splide__slide {
+      font-family: $font-playfair;
+      font-weight: 500;
+      position: relative;
+      min-height: 35rem;
+
+      &.is-active {
+        span,
+        h1,
+        h2,
+        a {
+          -webkit-animation-name: fadeInUp;
+          animation-name: fadeInUp;
+        }
+      }
+
+      div.text-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        width: 70%;
+      }
+
+      span {
+        display: inline-block;
+        text-transform: uppercase;
+        letter-spacing: 5px;
+      }
+
+      h1 {
+        font-weight: 700;
+        margin: 10px 0 30px 0;
+      }
+
+      h2 {
+        margin-bottom: 70px;
+      }
+
+      img {
         min-height: 35rem;
+        object-fit: cover;
+        object-position: center;
+      }
 
-        .splide__slide {
-            font-family: $font-playfair;
-            font-weight: 500;
-            position: relative;
-            min-height: 35rem;
+      a {
+        display: inline-block;
+        font-weight: 600;
+        font-family: "Montserrat", serif;
+        text-transform: uppercase;
+        border: #f1f1f1 solid 1px;
+        padding: 15px 25px;
+        transition: 0.3s all ease-in-out;
 
-            &.is-active {
-                span, h1, h2, a {
-                    -webkit-animation-name: fadeInUp;
-                    animation-name: fadeInUp;
-                }
-            }
-
-            div.text-container {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                color: white;
-                width: 70%;
-            }
-
-            span {
-                display: inline-block;
-                text-transform: uppercase;
-                letter-spacing: 5px;
-            }
-            
-            h1 {
-                font-weight: 700;
-                margin: 10px 0 30px 0;
-            }
-
-            h2 {
-                margin-bottom: 70px;
-            }
-
-            img {
-                min-height: 35rem;
-                object-fit: cover;
-                object-position: center;
-            }
-
-            a {
-                display: inline-block;
-                font-weight: 600;
-                font-family: "Montserrat", serif;
-                text-transform: uppercase;
-                border: #f1f1f1 solid 1px;
-                padding: 15px 25px;
-                transition: .3s all ease-in-out;
-
-                &:hover {
-                    color: black;
-                    background-color: $pink;
-                    border: $pink solid 1px;
-                }
-            }
-
-            &#splide01-slide02 {
-                text-align: right;
-
-                &.is-active {
-                    span, a {
-                        -webkit-animation-name: fadeInDown;
-                        animation-name: fadeInDown;
-                    }
-
-                    h1 {
-                        -webkit-animation-name: zoomIn;
-                        animation-name: zoomIn;
-                    }
-
-                    h2 {
-                        -webkit-animation-name: fadeInUp;
-                        animation-name: fadeInUp;
-                    }
-
-
-                }
-            }
+        &:hover {
+          color: black;
+          background-color: $pink;
+          border: $pink solid 1px;
         }
+      }
 
-        .splide__arrow {
-            position: absolute;
-            background: none;
-            height: 100%;
+      &#splide01-slide02 {
+        text-align: right;
 
-            svg {
-                fill: #f1f1f1;
-                &:hover {
-                    color: #fff;
-                }
-            }
-            
-            &.splide__arrow--prev {
-                left: 0;
-            }
+        &.is-active {
+          span,
+          a {
+            -webkit-animation-name: fadeInDown;
+            animation-name: fadeInDown;
+          }
 
-            &.splide__arrow--next {
-                right: 0;
-            }
+          h1 {
+            -webkit-animation-name: zoomIn;
+            animation-name: zoomIn;
+          }
+
+          h2 {
+            -webkit-animation-name: fadeInUp;
+            animation-name: fadeInUp;
+          }
         }
+      }
     }
 
+    .splide__arrow {
+      position: absolute;
+      background: none;
+      height: 100%;
+
+      svg {
+        fill: #f1f1f1;
+        &:hover {
+          color: #fff;
+        }
+      }
+
+      &.splide__arrow--prev {
+        left: 0;
+      }
+
+      &.splide__arrow--next {
+        right: 0;
+      }
+    }
+  }
 }

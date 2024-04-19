@@ -1,47 +1,74 @@
-.icon {
-    fill: transparent;
-}
+.container {
+  z-index: 0;
 
-.close {
-    color: black;
-}
-
-.social-media {
-    fill: black;
-    cursor: pointer;
-
-    &.icon-instagram {
-        &:hover {
-            fill: rgb(255, 135, 155);
-        }
+  &.carrinho-container{
+    position: relative;
+    span {
+      z-index: 1;
+      color: rgb(47, 47, 47);
+      font-weight: 600;
+      font-size: 14px;
+      top: 0;
+      left: 5px;
+      transform: translate(-50%);
+      position: absolute;
     }
-    &.icon-linkedin {
-        &:hover {
-            fill: rgb(173, 173, 255);
-        }
-    }
-    &.icon-github {
-        &:hover {
-            fill: rgb(255, 0, 238);
-        }
-    }
-    &.icon-tiktok {
-        &:hover {
-            fill: rgb(255, 238, 47);
-        }
-    }
-}
 
-.icon-carrinho {
-  transition: 0.3s fill ease-in-out;
-  &:hover {
-    fill: rgb(170, 170, 255);
-  }
-}
+    .icon-carrinho {
+      transition: 0.3s fill ease-in-out;
+      &:hover {
+        fill: rgb(170, 170, 255);
+      }
 
+      &.active {
+        fill: rgb(170, 170, 255);
+      }
+    }
+
+}
+}
 .icon-coracao {
   transition: 0.3s fill;
   &:hover {
     fill: rgb(255, 100, 100);
+  }
+  &.active {
+    fill: rgb(255, 100, 100);
+  }
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+  fill: transparent;
+}
+
+.close {
+  color: black;
+}
+
+.social-media {
+  fill: black;
+  cursor: pointer;
+
+  &.icon-instagram {
+    &:hover {
+      fill: rgb(255, 135, 155);
+    }
+  }
+  &.icon-linkedin {
+    &:hover {
+      fill: rgb(173, 173, 255);
+    }
+  }
+  &.icon-github {
+    &:hover {
+      fill: rgb(255, 0, 238);
+    }
+  }
+  &.icon-tiktok {
+    &:hover {
+      fill: rgb(255, 238, 47);
+    }
   }
 }

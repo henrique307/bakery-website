@@ -1,11 +1,15 @@
 
 
 export function priceHandler(price) {
-    return `R$ ${price.toFixed(2).toString().replace(".", ",")}`;
+    if (typeof price !== "number") price = price.price
+    return price ? `R$ ${price.toFixed(2).toString().replace(".", ",")}` : `R$ 0,00`
 }
 
 export function discountHandler({ price, discount }) {
-    return `R$ ${(price * (discount / 100))
+
+    const discountValue = price * (discount / 100)
+
+    return `R$ ${(price - discountValue)
         .toFixed(2)
         .toString()
         .replace(".", ",")}`;
@@ -25,5 +29,6 @@ export const thumb_carousel_splideOptions = {
     gap: 10,
     type: "loop",
     pagination: false,
+    arrows: false,
     isNavigation: true,
 };

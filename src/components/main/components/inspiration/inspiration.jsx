@@ -49,6 +49,8 @@ export function InspirationComponent() {
 
   const splideOptions = {
     type: "loop",
+    autoplay: true,
+    interval: 4000,
     perPage: 3,
     perMove: 1,
     gap: "30px",

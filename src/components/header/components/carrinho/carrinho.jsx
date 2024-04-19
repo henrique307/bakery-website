@@ -1,11 +1,10 @@
-import {
-  discountHandler,
-  priceHandler,
-} from "../../../main/components/products/utils";
-import { Trash } from "../../../../icons";
+import { useSelector } from "react-redux";
+import { priceHandler } from "../../../main/components/products/utils";
+import { CarrinhoItemComponent } from "./components/carrinhoItem/carrinhoItem";
+import { Link } from "react-router-dom";
 import "./carrinho.scss";
 
-export function CarrinhoComponent({ carrinho, setCarrinho }) {
+export function CarrinhoComponent() {
   // {
   //     url: "https://carami-store-demo.myshopify.com/cdn/shop/items/18_85e0afa9-9ef6-4a13-ba4c-33a9f5d9de72.jpg?v=1593664281",
   //     description:
@@ -16,73 +15,25 @@ export function CarrinhoComponent({ carrinho, setCarrinho }) {
   //     qtd: 3,
   //   },
 
-  function removeItem(item) {
-    const novoCarrinho = carrinho.filter((i) => i !== item);
-
-    console.log(novoCarrinho.length);
-    setCarrinho(novoCarrinho);
-  }
-
-  function changeCarrinho(item) {
-    const currentItem = carrinho.find((it) => item.name === it.name);
-    const newCarrinho = [...carrinho];
-
-    // console.log(currentItem)
-
-    // setCarrinho([...carrinho, {item}])
-  }
-
-  function getTotal(arr) {
-    return arr.reduce((acc, item) =>
-      acc.price ? acc.price + item.price : acc + item.price
-    );
-  }
+  const carrinho = useSelector((state) => state.carrinho);
 
   return (
     <div className="carrinho-container">
       <div className="itens-container">
-        {carrinho.map((item, index) => {
-          return (
-            <div className="item" key={index}>
-              <img src={item.url} alt={item.name} />
-              <div className="info">
-                <span className="name">{item.name}</span>
-                <div className="price-container">
-                  {item.discount ? (
-                    <>
-                      <span className="price text-sm">
-                        {discountHandler({
-                          ...item,
-                          price: item.price * item.qtd,
-                        })}
-                      </span>
-                      <span className="price text-sm discount">
-                        {priceHandler(item.price * item.qtd)}
-                      </span>
-                    </>
-                  ) : (
-                    <span className="price">
-                      {priceHandler(item.price * item.qtd)}
-                    </span>
-                  )}
-                </div>
-                <div className="actions">
-                  <input
-                    className="qtd"
-                    type="number"
-                    value={item.qtd}
-                    onChange={() => changeCarrinho(item)}
-                  />
-                  <Trash onClick={() => removeItem(item)} />
-                </div>
-              </div>
-            </div>
-          );
+        {carrinho.items.map((item, index) => {
+          return <CarrinhoItemComponent item={item} index={index} />;
         })}
       </div>
       <div className="buy-container">
-        <span className="total">Total:<span className="price">{priceHandler(getTotal(carrinho))}</span></span>
-        <button className="buy">buy now!</button>
+        <span className="total">
+          Total:
+          <span className="price">{priceHandler(carrinho.valorTotal)}</span>
+        </span>
+        <Link to={"/bakery-website/payment"} state={carrinho}>
+          <button className="buy">
+            buy now!
+          </button>
+        </Link>
       </div>
     </div>
   );

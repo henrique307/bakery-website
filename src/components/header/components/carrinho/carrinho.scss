@@ -61,6 +61,7 @@ div.carrinho-container {
       }
     }
   }
+  
   div.buy-container {
     width: 100%;
     color: black;
@@ -90,6 +91,7 @@ div.carrinho-container {
     }
 
     button {
+      cursor: pointer;
       padding: 10px 20px;
       background-color: $pink;
       color: white;
