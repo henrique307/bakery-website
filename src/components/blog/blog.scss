@@ -1,5 +1,5 @@
 section.blog {
-    background-color: #eee;
+    background-color: #fefefe;
     width: 100%;
     padding-top: 120px;
     padding-bottom: 60px;
@@ -33,6 +33,8 @@ section.blog {
         }
 
         article {
+            background-color: #eee;
+            padding: 20px 40px;
             display: flex;
             flex-direction: column;
             gap: 20px;
