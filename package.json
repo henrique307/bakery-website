@@ -2,8 +2,8 @@
   "name": "bakery",
   "type": "module",
   "version": "0.1.0",
-  "homepage": "https://henrique307.github.io/bakery-website",
-  "proxy": "http://localhost:4242",
+  "homepage": "https://bakery-website-coral.vercel.app/bakery-website",
+  "proxy": "https://bakery-website-coral.vercel.app",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
