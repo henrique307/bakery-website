@@ -1,0 +1,54 @@
+section.status {
+    height: 80svh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    div.status-container {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        .success-icon {
+            margin: 0 auto;
+            width: 150px;
+            height: 150px;
+            padding: 35px;
+            color: white;
+            background-color: greenyellow;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        h1.status-title {
+            font-weight: 600;
+            font-size: 25px;
+        }
+
+        span.status-message {
+            color: rgb(78, 78, 78);
+            margin: 20px 0;
+        }
+
+        .action-button {
+            background-color: black;
+            border: black 2px solid;
+            color: white;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            padding: 10px 20px;
+            margin-top: 10px;
+            width: 80%;
+            max-width: 400px;
+            margin: 0 auto;
+            transition: 0.3s all ease-in-out;
+  
+            &:hover {
+              background-color: transparent;
+              color: black;
+            }
+          }
+    }
+}

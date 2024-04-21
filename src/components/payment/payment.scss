@@ -20,7 +20,7 @@ section.payment {
       letter-spacing: 2px;
       display: flex;
       align-items: center;
-      margin-top: 10px;
+      margin-top: 50px;
       &::before {
         content: "";
         position: absolute;
@@ -92,19 +92,41 @@ section.payment {
               color: $gray;
             }
 
-            span.info-price {
-              margin-top: 30px;
-              color: $pink;
+            div.info-price-container {
+              span.info-price {
+                margin-top: 30px;
+                margin-right: 5px;
+                color: $pink;
+              }
+              span.old-price {
+                font-size: 12px;
+                color: gray;
+                text-decoration: line-through;
+              }
             }
+
           }
 
           .item-total {
             display: flex;
             flex-direction: column;
             align-items: right;
-            span.total {
-              text-wrap: nowrap;
-              font-weight: 500;
+
+            div.price-container {
+              display: flex;
+              flex-direction: column;
+              span.total {
+                text-wrap: nowrap;
+                font-weight: 500;
+              }
+
+              span.old-total {
+                color: gray;
+                font-size: 12px;
+                text-align: right;
+                text-decoration: line-through;
+              }
+
             }
 
             div.item-qtd {
@@ -197,6 +219,31 @@ section.payment {
             color: black;
           }
         }
+      }
+    }
+
+    .item-qtd {
+      font-size: 12px;
+      color: gray;
+    }
+  }
+
+  .modal-backdrop button {
+    cursor: default
+  }
+
+  dialog.modal {
+    div.modal-box {
+      background-color: white;
+      overflow: scroll;
+      scrollbar-width: none;
+      ::-webkit-scrollbar {
+        display: none;
+      }
+
+      span {
+        padding: 10px 20px;
+        margin: 0 auto;
       }
     }
   }

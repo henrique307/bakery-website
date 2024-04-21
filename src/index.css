@@ -3,10 +3,20 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+:root, [data-theme] {
+  color: black;
+  background-color: white;
+  color-scheme: light;
 }
 
 body {

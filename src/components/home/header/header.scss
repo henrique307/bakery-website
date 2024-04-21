@@ -1,0 +1,136 @@
+@import "../../../utilities/variables.scss";
+
+section.header {
+  z-index: 2;
+  position: fixed;
+  background-color: rgba(9, 9, 11, .7);
+
+  div.header-container {
+    .nav {
+      z-index: 3;
+      li {
+        position: relative;
+        padding: 0 30px;
+        cursor: pointer;
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          transition: 0.3s ease-in-out transform;
+          transform: scaleX(0);
+          background-color: $pink;
+          transform-origin: bottom right;
+        }
+
+        &:hover::after {
+          transform: scaleX(1);
+          transform-origin: bottom left;
+        }
+      }
+    }
+
+    .mobile-overlay {
+      z-index: 2;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba($color: #000000, $alpha: 0.5);
+      transition: 0.3s ease-in-out all;
+    }
+
+    svg {
+      margin: 0 5px;
+      cursor: pointer;
+    }
+
+    .icons-container {
+      display: flex;
+      align-items: center;
+      justify-content: right;
+      width: 173px;
+
+      .carrinho-container {
+        width: auto;
+      }
+    }
+
+    @media (width < 800px) {
+      .nav {
+        transition: 0.3s ease-in-out all;
+        opacity: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        transform: translate(-100%);
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        background-color: white;
+        color: black;
+        width: 80%;
+        max-width: 400px;
+
+        &.open {
+          transform: translate(0);
+          opacity: 1;
+        }
+
+        li {
+          padding: 10px;
+
+          &::after{
+            transform-origin: bottom left;
+          }
+        }
+
+        .mobile-nav-header {
+          position: relative;
+          padding: 20px 10px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+
+          h1 {
+            margin-right: auto;
+          }
+
+          &::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgb(216, 216, 216);
+            height: 2px;
+          }
+        }
+      }
+
+      .icons-container {
+        width: fit-content;
+      }
+      
+      .icon-sidebar {
+        margin-right: 40px;
+        display: inline-block;
+        text-align: left;
+      }
+    }
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    backdrop-filter: blur(10px);
+  }
+}

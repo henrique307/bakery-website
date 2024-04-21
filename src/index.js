@@ -1,22 +1,30 @@
 import { Provider } from "react-redux";
-import { store } from "./components/utils/slice/slices";
+import { store } from "./components/utils/slice/slices.js";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import App from './App.jsx';
+import { PaymentComponent } from "./components/payment/payment.jsx";
+import { ReturnComponent } from "./components/payment/components/return.jsx";
+import { BlogComponent } from "./components/blog/blog.jsx";
 import './index.css';
-import App from './App';
-import { PaymentComponent } from "./components/payment/payment";
 
 const router = createBrowserRouter([
   {
     path: "/bakery-website",
-    element: (
-      <App />
-    ),
+    element: <App />,
   },
   {
     path: "/bakery-website/payment",
-    element: <PaymentComponent/>
+    element: <PaymentComponent />
+  },
+  {
+    path: "/return",
+    element: <ReturnComponent />
+  },
+  {
+    path: "/blog",
+    element: <BlogComponent />
   }
 ]);
 

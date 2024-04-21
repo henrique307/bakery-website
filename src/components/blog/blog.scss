@@ -1,0 +1,44 @@
+section.blog {
+    background-color: #eee;
+    width: 100%;
+    padding-top: 120px;
+    padding-bottom: 60px;
+    div.post-container {
+        width: 80%;
+        max-width: 1200px;
+        margin: 0 auto;
+
+        h1.post-title {
+            text-align: center;
+            font-size: 30px;
+            font-weight: 600;
+        }
+
+        span.post-date {
+            display: inline-block;
+            transform: translate(0, -40%);
+            width: 100%;
+            text-align: center;
+            color: rgb(112, 112, 112);
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        img {
+            width: 90%;
+            margin: 0 auto;
+            object-fit: cover;
+            object-position: center;
+            margin-bottom: 50px;
+        }
+
+        article {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            p {
+                color: rgb(25, 25, 25);
+            }
+        }
+    }
+}

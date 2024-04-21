@@ -1,5 +1,5 @@
 import { createSlice, configureStore } from "@reduxjs/toolkit";
-import { CalcValue } from './utils/calValue';
+import { CalcValue } from './utils/calValue.js';
 
 const carrinhoSlice = createSlice({
     initialState: {
@@ -11,6 +11,7 @@ const carrinhoSlice = createSlice({
     reducers: {
         changeValue: (state, action) => {
             const itemIndex = state.items.findIndex(item => item.id === action.payload.id);
+
             state.items[itemIndex].qtd = action.payload.qtd;
 
             if (state.items[itemIndex].qtd === 0) {
@@ -21,16 +22,16 @@ const carrinhoSlice = createSlice({
             state.valorTotal = CalcValue(state.items);
         },
         addItem: (state, action) => {
-            if(action.payload.qtd === 0) return;
+            if (action.payload.qtd === 0) return;
 
             const itemIndex = state.items.findIndex(item => item.id === action.payload.id);
-            if(itemIndex === -1) {
+            if (itemIndex === -1) {
                 state.items.push(action.payload);
                 state.qtd = state.items.length;
                 state.valorTotal = CalcValue(state.items);
                 return;
             }
-            
+
             state.items[itemIndex].qtd += action.payload.qtd || 1;
             state.qtd = state.items.length;
             state.valorTotal = CalcValue(state.items);

@@ -1,16 +1,16 @@
-export function CalcValue(arr) {
-    if(!arr.length) return 0;
-
-    const totalValue = arr.reduce((prev, current) => {
-        let itemPrice = current.price * current.qtd;
-        let acc = prev.price ? prev.price * prev.qtd : prev;
-
-        if(current.discount) itemPrice = itemPrice * (current.discount / 100)
-
-        acc += itemPrice;
-        
-        return acc
-    })
-
-    return totalValue
-}
+export function CalcValue(produtos) {
+    let somatorio = 0;
+  
+    produtos.forEach(produto => {
+      if (produto.discount !== undefined && produto.discount > 0) {
+        const precoComDesconto = produto.price * (1 - produto.discount / 100);
+        const valorTotal = precoComDesconto * produto.qtd;
+        somatorio += valorTotal;
+      } else {
+        const valorTotal = produto.price * produto.qtd;
+        somatorio += valorTotal;
+      }
+    });
+  
+    return somatorio;
+  }

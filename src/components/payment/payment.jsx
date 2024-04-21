@@ -1,24 +1,56 @@
 import { useLocation } from "react-router-dom";
-import { FooterComponent } from "../footer/footer";
-import { priceHandler } from "../main/components/products/utils";
+import { useCallback } from "react";
+import { FooterComponent } from "../home/footer/footer";
+import {
+  discountHandler,
+  priceHandler,
+} from "../home/main/components/products/utils";
+import { loadStripe } from "@stripe/stripe-js";
+import {
+  EmbeddedCheckoutProvider,
+  EmbeddedCheckout,
+} from "@stripe/react-stripe-js";
 import { Link } from "react-router-dom";
 import "./payment.scss";
 
-export function PaymentComponent(props) {
+export function PaymentComponent() {
+
   const carrinho = useLocation().state;
 
-  console.log(carrinho);
+  function defineBody(carrinho) {
+    const body = {
+      items: carrinho.items.map((item) => {
+        return {
+          price: item.id,
+          quantity: item.qtd,
+        };
+      }),
+    };
 
-  //   {
-  //     url: "https://carami-store-demo.myshopify.com/cdn/shop/products/18_85e0afa9-9ef6-4a13-ba4c-33a9f5d9de72.jpg?v=1593664281",
-  //     onCart: 0,
-  //     fav: 0,
-  //     id: "74235",
-  //     description:
-  //       "Brigadeiro Delicadamente redondo, o brigadeiro tradicional é uma explosão de sabor em cada mordida. Coberto com granulados de chocolate ou cacau em pó, sua textura é macia e cremosa, derretendo na boca como uma nuvem de chocolate. Feito com uma mistura perfeita de leite condensado, cacau em pó e manteiga, esse doce brasileiro é uma verdadeira tentação para os amantes de chocolate. Com uma casquinha crocante por fora e um centro suave e indulgente, o brigadeiro é uma obra-prima da confeitaria que conquista paladares ao redor do mundo.",
-  //     name: "Vanila Cupcakes",
-  //     price: 20.9,
-  //   },
+    carrinho.items.map((item) => {
+      if (!!item.discount) {
+        Object.assign(body, { discount: item.discount });
+      }
+    });
+
+    return JSON.stringify(body);
+  }
+
+  const fetchClientSecret = useCallback(() => {
+    return fetch("/create-checkout-session", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: defineBody(carrinho),
+    })
+      .then((res) => res.json())
+      .then((data) => data.clientSecret);
+  }, []);
+
+  const options = { fetchClientSecret };
+
+  const stripePromise = loadStripe(
+    "pk_test_51OO0ZwCaFt3tFYFTOTwy7kBFqBTW9wAMtC1dI7QkL8sDniIrNLnfnb3u7Q6k6pYM1UO9vBieerj186UYZdgjdShT00u77hCHKb"
+  );
 
   return (
     <>
@@ -36,29 +68,47 @@ export function PaymentComponent(props) {
                     <img src={item.url} alt={item.name} />
                     <div className="item-info">
                       <h1 className="info-name text-lg">{item.name}</h1>
-                      <span className="info-id text-sm">Id: {item.id}</span>
-                      <span className="info-price text-sm">
-                        {priceHandler(item.price)}
-                      </span>
+                      <div className="info-price-container">
+                        {item.discount ? (
+                          <>
+                            <span className="info-price">
+                              {discountHandler({
+                                price: item.price,
+                                discount: item.discount,
+                              })}
+                            </span>
+                            <span className="old-price">
+                              {priceHandler(item.price)}
+                            </span>
+                          </>
+                        ) : (
+                          <span className="info-price">
+                            {priceHandler(item.price)}
+                          </span>
+                        )}
+                      </div>
+                      <span className="item-qtd">x{item.qtd}</span>
                     </div>
                     <div className="item-total">
-                      <span className="total">
-                        {priceHandler(item.price * item.qtd)}
-                      </span>
-                      {item.discount ? (
-                        <span className="sub-total">
-                          {item.price * item.qtd}
-                        </span>
-                      ) : null}
-                      <div className="item-qtd">
-                      <input
-                        defaultValue={item.qtd}
-                        className="qtd"
-                        type="number"
-                        name="qtd"
-                        id="qtd"
-                      />
-                    </div>
+                      <div className="price-container">
+                        {item.discount ? (
+                          <>
+                            <span className="total">
+                              {discountHandler({
+                                price: item.price * item.qtd,
+                                discount: item.discount,
+                              })}
+                            </span>
+                            <span className="old-total">
+                              {priceHandler(item.price * item.qtd)}
+                            </span>
+                          </>
+                        ) : (
+                          <span className="total">
+                            {priceHandler(item.price * item.qtd)}
+                          </span>
+                        )}
+                      </div>
                     </div>
                   </div>
                 );
@@ -74,24 +124,54 @@ export function PaymentComponent(props) {
                         <span className="summary-name">{item.name}</span>
                         <span className="summary-qtd text-sm">{item.qtd}x</span>
                       </div>
-                      <span className="summary-price">
-                        {priceHandler(item.price * item.qtd)}
-                      </span>
-                      {item.discount ? (
-                        <span className="summary-discount">{item.price}</span>
-                      ) : null}
+                      <div className="summary-price-container">
+                        {item.discount ? (
+                          <span className="summary-price">
+                            {discountHandler({
+                              price: item.price * item.qtd,
+                              discount: item.discount,
+                            })}
+                          </span>
+                        ) : (
+                          <span className="summary-price">
+                            {priceHandler(item.price * item.qtd)}
+                          </span>
+                        )}
+                      </div>
                     </div>
                   );
                 })}
               </div>
               <div className="total-container">
                 <span className="total-tag">Total</span>
-                <span className="total-price">{priceHandler(carrinho.valorTotal)}</span>
+                <span className="total-price">
+                  {priceHandler(carrinho.valorTotal)}
+                </span>
               </div>
-              <button className="action-button">Pay now</button>
+              <button
+                onClick={() =>
+                  document.getElementById("my_modal_2").showModal()
+                }
+                className="action-button"
+              >
+                Pay now
+              </button>
             </div>
           </div>
         </div>
+        <dialog id="my_modal_2" className="modal">
+          <div className="modal-box">
+            <span>
+              Cartão-teste: 4242 4242 4242 4242
+            </span>
+            <EmbeddedCheckoutProvider stripe={stripePromise} options={options}>
+              <EmbeddedCheckout />
+            </EmbeddedCheckoutProvider>
+          </div>
+          <form method="dialog" className="modal-backdrop">
+            <button>close</button>
+          </form>
+        </dialog>
       </section>
       <FooterComponent />
     </>

@@ -1,0 +1,23 @@
+div.qtd-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    div {
+        display: flex;
+        align-items: center;
+        padding: 5px;
+        font-size: 25px;
+        height: 25px;
+        font-weight: 600;
+        cursor: pointer;
+        border: 1px solid rgb(223, 223, 223);
+        user-select: none;
+    }
+    
+    input {
+        text-align: center;
+        width: 50px;
+    }
+
+}
