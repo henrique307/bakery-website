@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { SuccessComponent } from "./success";
+import { stripeInstance } from "../../..";
+import { faTruckLoading } from "@fortawesome/free-solid-svg-icons";
 
 export function ReturnComponent() {
   const [status, setStatus] = useState("");
@@ -10,15 +12,21 @@ export function ReturnComponent() {
     const urlParams = new URLSearchParams(queryString);
     const sessionId = urlParams.get("session_id");
 
-    fetch(`/session-status?session_id=${sessionId}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setStatus(data.status);
-        setClientEmail(data.custumer_email);
-      });
+    async function getSession() {
+      const session = await stripeInstance.checkout.sessions.retrieve(
+        sessionId
+      );
+
+      console.log(session);
+
+      setStatus(session.status);
+      setClientEmail(session.customer_details.email);
+    }
+
+    getSession();
   }, []);
 
-  console.log(status, clientEmail)
+  console.log(status, clientEmail);
 
   if (status === "complete") {
     return <SuccessComponent clientEmail={clientEmail} />;
@@ -28,5 +36,5 @@ export function ReturnComponent() {
     return <SuccessComponent clientEmail={clientEmail} />;
   }
 
-  return <faTruckLoading/>;
+  return <></>;
 }

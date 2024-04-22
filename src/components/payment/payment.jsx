@@ -1,10 +1,11 @@
-import { useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { useCallback } from "react";
 import { FooterComponent } from "../home/footer/footer";
 import {
   discountHandler,
   priceHandler,
 } from "../home/main/components/products/utils";
+import { stripeInstance } from "../../index";
 import { loadStripe } from "@stripe/stripe-js";
 import {
   EmbeddedCheckoutProvider,
@@ -14,12 +15,12 @@ import { Link } from "react-router-dom";
 import "./payment.scss";
 
 export function PaymentComponent() {
+  const carrinho = useSelector((state) => state.carrinho);
 
-  const carrinho = useLocation().state;
-
+  const domain = "http://localhost:5500";
   function defineBody(carrinho) {
     const body = {
-      items: carrinho.items.map((item) => {
+      line_items: carrinho.items.map((item) => {
         return {
           price: item.id,
           quantity: item.qtd,
@@ -29,21 +30,30 @@ export function PaymentComponent() {
 
     carrinho.items.map((item) => {
       if (!!item.discount) {
-        Object.assign(body, { discount: item.discount });
+        Object.assign(body, { discounts: [{coupon: item.coupon}] });
       }
     });
 
-    return JSON.stringify(body);
+    return body;
   }
 
-  const fetchClientSecret = useCallback(() => {
-    return fetch("/create-checkout-session", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: defineBody(carrinho),
-    })
-      .then((res) => res.json())
-      .then((data) => data.clientSecret);
+  const fetchClientSecret = useCallback(async () => {
+    console.log(defineBody(carrinho));
+    const session = await stripeInstance.checkout.sessions
+      .create({
+        ui_mode: "embedded",
+        ...defineBody(carrinho),
+        payment_method_types: ["card"], //'pix', 'paypal', 'boleto'
+        mode: "payment",
+        return_url: `${domain}/return?session_id={CHECKOUT_SESSION_ID}`,
+      })
+      .catch((e) => {
+        return e;
+      });
+
+    console.log(session);
+
+    return session.client_secret;
   }, []);
 
   const options = { fetchClientSecret };
@@ -161,9 +171,7 @@ export function PaymentComponent() {
         </div>
         <dialog id="my_modal_2" className="modal">
           <div className="modal-box">
-            <span>
-              Cartão-teste: 4242 4242 4242 4242
-            </span>
+            <span>Cartão-teste: 4242 4242 4242 4242</span>
             <EmbeddedCheckoutProvider stripe={stripePromise} options={options}>
               <EmbeddedCheckout />
             </EmbeddedCheckoutProvider>
