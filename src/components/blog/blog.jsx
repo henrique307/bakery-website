@@ -10,8 +10,6 @@ export function BlogComponent() {
 
   const post = posts.find((item) => item.id === postId);
 
-  console.log(post);
-
   return (
     <>
       <HeaderComponent />

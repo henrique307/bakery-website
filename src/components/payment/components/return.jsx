@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { SuccessComponent } from "./success";
 import { stripeInstance } from "../../..";
-import { faTruckLoading } from "@fortawesome/free-solid-svg-icons";
 
 export function ReturnComponent() {
   const [status, setStatus] = useState("");
@@ -17,16 +16,12 @@ export function ReturnComponent() {
         sessionId
       );
 
-      console.log(session);
-
       setStatus(session.status);
       setClientEmail(session.customer_details.email);
     }
 
     getSession();
   }, []);
-
-  console.log(status, clientEmail);
 
   if (status === "complete") {
     return <SuccessComponent clientEmail={clientEmail} />;

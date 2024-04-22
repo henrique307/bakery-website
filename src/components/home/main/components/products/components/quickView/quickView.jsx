@@ -36,12 +36,12 @@ export function QuickViewComponent({
     ) {
       refs.mainRef.current.sync(refs.thumbRef.current.splide);
     }
-  }, []);
+  }, [refs.mainRef, refs.thumbRef]);
 
   useEffect(() => {
     refs.thumbRef.current.splide.go(product.index);
     // refs.mainRef.current.splide.go(product.index);
-  }, [product]);
+  }, [product, refs.thumbRef]);
 
   function closeDetails() {
     setQuickView(false);

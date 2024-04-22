@@ -1,5 +1,5 @@
-import { useState, useContext } from "react";
-import { Lupa, Carrinho, SideBar, Coracao } from "../../../icons";
+import { useState } from "react";
+import { Carrinho, SideBar, Coracao } from "../../../icons";
 import { SideContentComponent } from "../../utils/sideContent/SideContent.jsx";
 import { CarrinhoComponent } from "./components/carrinho/carrinho.jsx";
 import { FavsComponent } from "./components/favComponent/favs.jsx";
@@ -26,9 +26,9 @@ export function HeaderComponent() {
             <li className="text-lg p-1">Home</li>
           </Link>
           <a href="#products">
-            <li className="text-lg p-1">Our products</li>
+            <li className="text-lg p-1">Products</li>
           </a>
-          <a href="#">
+          <a href="#about">
             <li className="text-lg p-1">About</li>
           </a>{" "}
           {/*faz pagina de about depois*/}

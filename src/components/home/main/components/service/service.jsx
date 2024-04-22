@@ -21,7 +21,7 @@ export function ServicesComponent() {
   ];
 
   return (
-    <section className="services">
+    <section className="services" id="about">
       <div className="services-container">
         {services.map((service, i) => {
           return (

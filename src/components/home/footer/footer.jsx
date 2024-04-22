@@ -21,7 +21,7 @@ export function FooterComponent() {
         <div className="infos">
           <div className="help-information">
             <h1>Help & Information</h1>
-            <a href="#">About Us</a>
+            <a href="#about">About Us</a>
             <a href="#">Privacy Policy</a>
             <a href="#">Terms & conditions</a>
             <a href="#">Products Return</a>

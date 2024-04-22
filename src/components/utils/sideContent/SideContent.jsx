@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Close } from "../../../icons/index";
 import "./sideContent.scss";
 

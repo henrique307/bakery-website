@@ -44,7 +44,7 @@ export function IntruductionComponent() {
               </div>
               <img
                 src={banner.url}
-                alt="Image 2"
+                alt=""
               />
             </SplideSlide>
           );

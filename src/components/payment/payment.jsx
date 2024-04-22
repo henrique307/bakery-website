@@ -28,9 +28,9 @@ export function PaymentComponent() {
       }),
     };
 
-    carrinho.items.map((item) => {
+    carrinho.items.forEach((item) => {
       if (!!item.discount) {
-        Object.assign(body, { discounts: [{coupon: item.coupon}] });
+        Object.assign(body, { discounts: [{ coupon: item.coupon }] });
       }
     });
 
@@ -38,7 +38,6 @@ export function PaymentComponent() {
   }
 
   const fetchClientSecret = useCallback(async () => {
-    console.log(defineBody(carrinho));
     const session = await stripeInstance.checkout.sessions
       .create({
         ui_mode: "embedded",
@@ -51,10 +50,8 @@ export function PaymentComponent() {
         return e;
       });
 
-    console.log(session);
-
     return session.client_secret;
-  }, []);
+  }, [carrinho]);
 
   const options = { fetchClientSecret };
 
