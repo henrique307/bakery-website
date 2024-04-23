@@ -11,7 +11,7 @@ import {
   EmbeddedCheckoutProvider,
   EmbeddedCheckout,
 } from "@stripe/react-stripe-js";
-import { Link } from "react-router-dom";
+import { Link, Navigate, redirect } from "react-router-dom";
 import "./payment.scss";
 
 export function PaymentComponent() {
@@ -58,6 +58,10 @@ export function PaymentComponent() {
   const stripePromise = loadStripe(
     "pk_test_51OO0ZwCaFt3tFYFTOTwy7kBFqBTW9wAMtC1dI7QkL8sDniIrNLnfnb3u7Q6k6pYM1UO9vBieerj186UYZdgjdShT00u77hCHKb"
   );
+  
+  if(!carrinho.items.length) {
+    return <Navigate to="/bakery-website" />
+  }
 
   return (
     <>
