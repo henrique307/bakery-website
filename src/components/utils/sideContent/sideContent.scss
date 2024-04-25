@@ -15,7 +15,7 @@ section.sideContent-container {
         width: 100%;
         background-color: black;
         opacity: 0.5;
-        height: 100svh;
+        height: 100%;
     }
     
     div.sideContent {
@@ -23,11 +23,11 @@ section.sideContent-container {
         position: fixed;
         top: 0;
         right: 0;
-        width: 50%;
+        width: 80%;
         max-width: 600px;
-        min-width: 400px;
+        min-width: 200px;
         background-color: white;
-        height: 100svh;
+        height: 100%;
         opacity: 0;
         transform: translate(100%);
 
@@ -45,6 +45,18 @@ section.sideContent-container {
             &:hover {
                 color: red;
             }
+        }
+
+        span.empty {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 25px;
+            font-weight: 600;
+            color: gray;
+            text-align: center;
+            user-select: none;
         }
     }
 }

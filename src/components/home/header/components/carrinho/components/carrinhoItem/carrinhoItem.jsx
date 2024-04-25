@@ -44,7 +44,7 @@ export function CarrinhoItemComponent({ item, index }) {
           />
           <Trash
             onClick={() => {
-              dispatch(removeItem(index));
+              dispatch(removeItem(item.id));
             }}
           />
         </div>

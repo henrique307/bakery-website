@@ -1,5 +1,6 @@
 import { createSlice, configureStore } from "@reduxjs/toolkit";
 import { CalcValue } from './utils/calValue.js';
+import { cartSize } from './utils/cartSize.js';
 
 const carrinhoSlice = createSlice({
     initialState: {
@@ -16,9 +17,9 @@ const carrinhoSlice = createSlice({
 
             if (state.items[itemIndex].qtd === 0) {
                 state.items.splice(itemIndex, 1);
-                state.qtd = state.items.length;
             }
 
+            state.qtd = cartSize(state.items);
             state.valorTotal = CalcValue(state.items);
         },
         addItem: (state, action) => {
@@ -27,18 +28,20 @@ const carrinhoSlice = createSlice({
             const itemIndex = state.items.findIndex(item => item.id === action.payload.id);
             if (itemIndex === -1) {
                 state.items.push(action.payload);
-                state.qtd = state.items.length;
                 state.valorTotal = CalcValue(state.items);
+                state.qtd = cartSize(state.items);
                 return;
             }
 
             state.items[itemIndex].qtd += action.payload.qtd || 1;
-            state.qtd = state.items.length;
             state.valorTotal = CalcValue(state.items);
+            state.qtd = cartSize(state.items);
         },
         removeItem: (state, action) => {
-            state.items.splice(action.payload.product, 1);
-            state.qtd = state.items.length;
+            const itemIndex = state.items.findIndex(item => item.id === action.payload);
+
+            state.items.splice(itemIndex, 1);
+            state.qtd = cartSize(state.items);
             state.valorTotal = CalcValue(state.items);
         }
     }

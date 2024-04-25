@@ -3,7 +3,7 @@
 section.header {
   z-index: 2;
   position: fixed;
-  background-color: rgba(9, 9, 11, .7);
+  background-color: rgba(9, 9, 11, 0.7);
 
   div.header-container {
     .nav {
@@ -55,7 +55,23 @@ section.header {
       width: 173px;
 
       .carrinho-container {
+        position: relative;
         width: auto;
+
+        .qtd-carrinho {
+          position: absolute;
+          background-color: red;
+          border-radius: 50%;
+          font-size: 12px;
+          top: -7px;
+          left: 0;
+          color: black;
+          padding: 0 5px;
+        }
+
+        .icon-carrinho {
+          fill: transparent;
+        }
       }
     }
 
@@ -83,7 +99,7 @@ section.header {
         li {
           padding: 10px;
 
-          &::after{
+          &::after {
             transform-origin: bottom left;
           }
         }
@@ -94,6 +110,10 @@ section.header {
           display: flex;
           align-items: center;
           gap: 10px;
+
+          .icon-coracao {
+            display: inline-block;
+          }
 
           h1 {
             margin-right: auto;
@@ -113,8 +133,11 @@ section.header {
 
       .icons-container {
         width: fit-content;
+        .icon-coracao {
+          display: none;
+        }
       }
-      
+
       .icon-sidebar {
         margin-right: 40px;
         display: inline-block;

@@ -7,7 +7,10 @@ export function SideContentComponent(props) {
   return (
     <section className="sideContent-container">
       <div className={`sideContent ${props.open ? "open" : ""}`}>
-      <Close onClick={() => props.setOpen(false)} />
+        <span className={`empty`}>
+          {props.isEmpty.message}
+        </span>
+        <Close onClick={() => props.setOpen(false)} />
         {props.children}
       </div>
       <div
