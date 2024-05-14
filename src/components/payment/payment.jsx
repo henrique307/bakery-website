@@ -17,7 +17,8 @@ import "./payment.scss";
 export function PaymentComponent() {
   const carrinho = useSelector((state) => state.carrinho);
 
-  const domain = "http://localhost:5500";
+  const domain = "https://henrique307.github.io";
+
   function defineBody(carrinho) {
     const body = {
       line_items: carrinho.items.map((item) => {
