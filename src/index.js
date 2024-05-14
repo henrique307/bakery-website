@@ -1,6 +1,6 @@
 import { Provider } from "react-redux";
 import { store } from "./components/utils/slice/slices.js";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { RouterProvider, createHashRouter } from "react-router-dom";
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
@@ -15,13 +15,13 @@ export const stripeInstance = stripe(
   "sk_test_51OO0ZwCaFt3tFYFT7lW7sA1nRmvFj1UnlnMoAGHPJha26bmxIj1Uz0qSS7kiBYXjK2oP6fvxggJM0fCVW20vnTR500UlTbAOF3"
 );
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
-    path: "/bakery-website",
+    path: "/",
     element: <App />,
   },
   {
-    path: "/bakery-website/payment",
+    path: "/payment",
     element: <PaymentComponent />
   },
   {

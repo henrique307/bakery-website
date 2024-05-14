@@ -8,7 +8,7 @@ export function NotFoundPage() {
         <div className="bg-slate-200 font-medium flex flex-col p-10 align-center justify-center h-full w-full px-4 py-16 bg-base-200">
             <h1 className="font-semibold mx-auto w-fit text-7xl text-base-50">4<span className="text-red-600">0</span>4</h1>
             <span className="mx-auto w-fit">Pagina não encontrada</span>
-            <Link to={"/bakery-website"} className="btn btn-outline btn-primary w-fit uppercase tracking-widest mx-auto mt-5">Voltar</Link>
+            <Link to={"/"} className="btn btn-outline btn-primary w-fit uppercase tracking-widest mx-auto mt-5">Voltar</Link>
         </div>
       </div>
     </section>

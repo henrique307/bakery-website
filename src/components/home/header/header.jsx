@@ -7,6 +7,7 @@ import { FavsComponent } from "./components/favComponent/favs.jsx";
 import { Logo } from "../../utils/logo/Logo.component.jsx";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { HashLink } from "react-router-hash-link";
 import "./header.scss";
 
 export function HeaderComponent() {
@@ -32,19 +33,19 @@ export function HeaderComponent() {
               }}
             />
           </div>
-          <Link to="/bakery-website">
+          <Link to="/">
             <li className="text-lg p-1">Home</li>
           </Link>
-          <a href="#products">
+          <HashLink smooth to="#products">
             <li className="text-lg p-1">Products</li>
-          </a>
-          <a href="#about">
+          </HashLink>
+          <HashLink smooth to="#about">
             <li className="text-lg p-1">About</li>
-          </a>{" "}
+          </HashLink>
           {/*faz pagina de about depois*/}
-          <a href="#blog">
+          <HashLink smooth to="#blog">
             <li className="text-lg p-1">Blog</li>
-          </a>
+          </HashLink>
         </ul>
         <div
           onClick={() => setMobileNavOpen(!mobileNavOpen)}
@@ -53,14 +54,20 @@ export function HeaderComponent() {
         <SideContentComponent
           open={carrinhoTabOpen}
           setOpen={setCarrinhoTabOpen}
-          isEmpty={{message: carrinho.items.length ? "" : "Your cart is empty"}}
+          isEmpty={{
+            message: carrinho.items.length ? "" : "Your cart is empty",
+          }}
         >
           <CarrinhoComponent />
         </SideContentComponent>
         <SideContentComponent
           open={favTabOpen}
           setOpen={setFavTabOpen}
-          isEmpty={{message: favs.list.length ? "" : "You haven't chosen a favorite item yet"}}
+          isEmpty={{
+            message: favs.list.length
+              ? ""
+              : "You haven't chosen a favorite item yet",
+          }}
         >
           <FavsComponent />
         </SideContentComponent>

@@ -2,6 +2,7 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import "./introduction.scss";
 import "animate.css";
+import { HashLink } from "react-router-hash-link";
 
 
 export function IntruductionComponent() {
@@ -40,7 +41,7 @@ export function IntruductionComponent() {
                 <span className="text-lg animate__animated">{banner.span}</span>
                 <h1 className="text-4xl animate__animated">{banner.title}</h1>
                 <h2 className="text-lg animate__animated">{banner.subtitle}</h2>
-                <a href="#products" className="text-sm animate__animated">{banner.button}</a>
+                <HashLink smooth to="#products" className="text-sm animate__animated">{banner.button}</HashLink>
               </div>
               <img
                 src={banner.url}

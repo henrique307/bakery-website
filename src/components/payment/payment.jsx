@@ -17,7 +17,27 @@ import "./payment.scss";
 export function PaymentComponent() {
   const carrinho = useSelector((state) => state.carrinho);
 
-  const domain = "https://henrique307.github.io";
+  const fetchClientSecret = useCallback(async () => {
+    const domain = "https://henrique307.github.io/bakery-website";
+    
+    const session = await stripeInstance.checkout.sessions
+      .create({
+        ui_mode: "embedded",
+        ...defineBody(carrinho),
+        payment_method_types: ["card"], //'pix', 'paypal', 'boleto'
+        mode: "payment",
+        return_url: `${domain}/#/return?session_id={CHECKOUT_SESSION_ID}`,
+      })
+      .catch((e) => {
+        return e;
+      });
+
+    return session.client_secret;
+  }, [carrinho]);
+
+  if(!carrinho.items.length) {
+    return <Navigate to="/" />
+  }
 
   function defineBody(carrinho) {
     const body = {
@@ -38,37 +58,17 @@ export function PaymentComponent() {
     return body;
   }
 
-  const fetchClientSecret = useCallback(async () => {
-    const session = await stripeInstance.checkout.sessions
-      .create({
-        ui_mode: "embedded",
-        ...defineBody(carrinho),
-        payment_method_types: ["card"], //'pix', 'paypal', 'boleto'
-        mode: "payment",
-        return_url: `${domain}/return?session_id={CHECKOUT_SESSION_ID}`,
-      })
-      .catch((e) => {
-        return e;
-      });
-
-    return session.client_secret;
-  }, [carrinho]);
-
   const options = { fetchClientSecret };
 
   const stripePromise = loadStripe(
     "pk_test_51OO0ZwCaFt3tFYFTOTwy7kBFqBTW9wAMtC1dI7QkL8sDniIrNLnfnb3u7Q6k6pYM1UO9vBieerj186UYZdgjdShT00u77hCHKb"
   );
-  
-  if(!carrinho.items.length) {
-    return <Navigate to="/bakery-website" />
-  }
 
   return (
     <>
       <section className="payment">
         <div className="payment-container">
-          <Link to={"/bakery-website"}>
+          <Link to={"/"}>
             <span className="back">back</span>
           </Link>
           <h1 className="payment-title text-3xl">Your Cart</h1>

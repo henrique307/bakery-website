@@ -18,7 +18,7 @@ export function SuccessComponent({ clientEmail }) {
             Obrigado pela preferência 😁 <br /> Foi enviado um email para{" "}
             {clientEmail} com os detalhes da compra
           </span>
-          <Link className="action-button" to={"/bakery-website"}>Voltar ao inicio</Link>
+          <Link className="action-button" to={"/"}>Voltar ao inicio</Link>
         </div>
       </section>
       <FooterComponent />

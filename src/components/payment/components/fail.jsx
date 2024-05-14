@@ -18,7 +18,7 @@ export function FailComponent() {
             Por favor <Link to={"/checkout"}>tente novamente</Link>, ou entre em
             contato com nossa equipe em: <br /> henrique.florencio307@gmail.com
           </span>
-          <Link to={"/bakery-website"}>Voltar ao inicio</Link>
+          <Link to={"/"}>Voltar ao inicio</Link>
         </div>
       </section>
       <FooterComponent />

@@ -19,7 +19,7 @@ export function CarrinhoComponent() {
           Total:
           <span className="price">{priceHandler(carrinho.valorTotal)}</span>
         </span>
-        <Link to={"/bakery-website/payment"} state={carrinho}>
+        <Link to={"payment"} state={carrinho}>
           <button className="buy">buy now!</button>
         </Link>
       </div>

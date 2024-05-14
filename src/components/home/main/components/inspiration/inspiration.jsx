@@ -75,10 +75,12 @@ export function InspirationComponent() {
       <h1 className="section-title text-3xl">Inspiration</h1>
       <Splide options={splideOptions}>
         {posts.map((post, i) => {
+          const postLink = `/blog?post=${post.id}`
+          
           return (
             <SplideSlide key={i}>
               <div className="image-container">
-                <Link to={`/blog?post=${post.id}`} state={post}>
+                <Link to={postLink} state={post}>
                   <img className="image" src={post.image} alt={post.title} />
                 </Link>
               </div>
@@ -87,13 +89,13 @@ export function InspirationComponent() {
                 <span className="month">{post.data.month}</span>
               </div>
               <span className="news text-xs">news</span>
-              <Link to={`/blog?post=${post.id}`} state={post}>
+              <Link to={postLink} state={post}>
                 <h1 className="title text-xl">{post.title}</h1>
               </Link>
               <article>{post.description}</article>
               <Link
                 className="readmore"
-                to={`/blog?post=${post.id}`}
+                to={postLink}
                 state={post}
               >
                 Read more

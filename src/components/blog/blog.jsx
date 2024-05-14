@@ -2,13 +2,18 @@ import { posts } from "../home/main/components/inspiration/inspiration";
 import { HeaderComponent } from "../home/header/header";
 import { FooterComponent } from "../home/footer/footer";
 import "./blog.scss";
+import { Navigate } from "react-router-dom";
 
 export function BlogComponent() {
-  const queryString = window.location.search;
-  const urlParams = new URLSearchParams(queryString);
-  const postId = +urlParams.get("post");
+  const url = window.location.href.split("#/blog?")[1];
+  const urlParams = new URLSearchParams(url);
+  const postId = urlParams.get("post");
 
-  const post = posts.find((item) => item.id === postId);
+  if (!postId) {
+    return <Navigate to={"/"} />;
+  }
+
+  const post = posts.find((item) => item.id === +postId);
 
   return (
     <>
