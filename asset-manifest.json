@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/bakery-website/static/css/main.9f7aeb15.css",
-    "main.js": "/bakery-website/static/js/main.9fd88203.js",
+    "main.js": "/bakery-website/static/js/main.e9542d68.js",
     "index.html": "/bakery-website/index.html",
     "main.9f7aeb15.css.map": "/bakery-website/static/css/main.9f7aeb15.css.map",
-    "main.9fd88203.js.map": "/bakery-website/static/js/main.9fd88203.js.map"
+    "main.e9542d68.js.map": "/bakery-website/static/js/main.e9542d68.js.map"
   },
   "entrypoints": [
     "static/css/main.9f7aeb15.css",
-    "static/js/main.9fd88203.js"
+    "static/js/main.e9542d68.js"
   ]
 }
