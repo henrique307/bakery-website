@@ -36,6 +36,7 @@ footer {
     .infos {
       width: 100%;
       display: flex;
+      margin-bottom: 48px;
 
       h1 {
         position: relative;
@@ -97,29 +98,10 @@ footer {
       .infos {
         align-items: center;
         flex-direction: column;
-        gap: 20px;
+        gap: 40px;
         text-align: center;
       }
     }
   }
 
-  div.copy {
-    width: 100%;
-    color: #6d6d6d;
-    position: relative;
-    text-align: center;
-    margin-top: 10px;
-    padding: 10px 0;
-
-    &::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      width: 100%;
-      background-color: rgb(222, 222, 222);
-      height: 1px;
-    }
-  }
 }

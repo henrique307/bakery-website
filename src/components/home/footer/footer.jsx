@@ -45,9 +45,6 @@ export function FooterComponent() {
           </div>
         </div>
       </div>
-      <div className="copy">
-        <span>© Copyright Henrique Florencio 2024</span>
-      </div>
     </footer>
   );
 }

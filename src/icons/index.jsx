@@ -15,7 +15,7 @@ export function Carrinho({ onClick, qtd }) {
         viewBox="0 0 24 24"
         strokeWidth={1.5}
         stroke="currentColor"
-        className={`${!!qtd ? "active" : ""} icon w-6 h-6 icon icon-carrinho`}
+        className={`${!!qtd ? "active" : ""} icon w-5 h-5 icon icon-carrinho`}
       >
         <path
           strokeLinecap="round"
@@ -39,7 +39,7 @@ export function Coracao({ onClick, active }) {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className={`${active ? "active" : ""} icon w-6 h-6 icon icon-coracao`}
+      className={`${active ? "active" : ""} icon w-5 h-5 icon icon-coracao`}
     >
       <path
         strokeLinecap="round"

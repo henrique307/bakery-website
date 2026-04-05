@@ -18,9 +18,13 @@ export function HeaderComponent() {
   const [carrinhoTabOpen, setCarrinhoTabOpen] = useState(false);
   const [favTabOpen, setFavTabOpen] = useState(false);
 
+  function closeMobileNav() {
+    setMobileNavOpen(false);
+  }
+
   return (
     <section className="header w-full p-5 text-white">
-      <div className="header-container w-full mx-auto flex justify-between">
+      <div className="header-container w-11/12 mx-auto flex justify-between">
         <SideBar onClick={() => setMobileNavOpen(!mobileNavOpen)} />
         <Logo />
         <ul className={`nav flex ${mobileNavOpen ? "open" : ""}`}>
@@ -29,22 +33,22 @@ export function HeaderComponent() {
             <Coracao
               onClick={() => {
                 setFavTabOpen(true);
-                setMobileNavOpen(false);
+                closeMobileNav();
               }}
             />
           </div>
-          <Link to="/">
-            <li className="text-lg p-1">Home</li>
+          <Link className="flex align-center" to="/">
+            <li onClick={closeMobileNav} className="w-full text-sm p-1">Home</li>
           </Link>
-          <HashLink smooth to="#products">
-            <li className="text-lg p-1">Products</li>
+          <HashLink className="flex align-center" smooth to="#products">
+            <li onClick={closeMobileNav} className="w-full text-sm p-1">Products</li>
           </HashLink>
-          <HashLink smooth to="#about">
-            <li className="text-lg p-1">About</li>
+          <HashLink className="flex align-center" smooth to="#about">
+            <li onClick={closeMobileNav} className="w-full text-sm p-1">About</li>
           </HashLink>
           {/*faz pagina de about depois*/}
-          <HashLink smooth to="#blog">
-            <li className="text-lg p-1">Blog</li>
+          <HashLink className="flex align-center" smooth to="#blog">
+            <li onClick={closeMobileNav} className="w-full text-sm p-1">Blog</li>
           </HashLink>
         </ul>
         <div
@@ -71,7 +75,7 @@ export function HeaderComponent() {
         >
           <FavsComponent />
         </SideContentComponent>
-        <div className="icons-container flex">
+        <div className="w-40 icons-container flex gap-4 justify-center">
           <Carrinho
             qtd={carrinho.qtd}
             onClick={() => setCarrinhoTabOpen(true)}

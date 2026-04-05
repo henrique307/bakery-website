@@ -4,7 +4,6 @@ import "./introduction.scss";
 import "animate.css";
 import { HashLink } from "react-router-hash-link";
 
-
 export function IntruductionComponent() {
   const options = {
     width: "100%",
@@ -37,16 +36,22 @@ export function IntruductionComponent() {
         {banners.map((banner, key) => {
           return (
             <SplideSlide key={key}>
-              <div className="text-container">
+              <div className="text-container z-20">
                 <span className="text-lg animate__animated">{banner.span}</span>
                 <h1 className="text-4xl animate__animated">{banner.title}</h1>
                 <h2 className="text-lg animate__animated">{banner.subtitle}</h2>
-                <HashLink smooth to="#products" className="text-sm animate__animated">{banner.button}</HashLink>
+                <HashLink
+                  smooth
+                  to="#products"
+                  className="text-sm animate__animated"
+                >
+                  {banner.button}
+                </HashLink>
               </div>
-              <img
-                src={banner.url}
-                alt=""
-              />
+              <div className="relative z-10">
+                <div className="w-full h-full absolute top-0 left-0 bg-black opacity-50"></div>
+                <img src={banner.url} alt="" />
+              </div>
             </SplideSlide>
           );
         })}
