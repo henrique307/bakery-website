@@ -8,7 +8,7 @@ export function FooterComponent() {
       <div className="footer-container">
         <div className="logo-container">
           <Logo></Logo>
-          <span className="text-xs footer-message">
+          <span className="text-ss footer-message">
             Sophisticated simplicity for the independent mind.
           </span>
           <div className="icons">
@@ -20,7 +20,7 @@ export function FooterComponent() {
         </div>
         <div className="infos">
           <div className="help-information">
-            <h1>Help & Information</h1>
+            <h1 className="text-ss">Help & Information</h1>
             <a href="#">About Us</a>
             <a href="#">Privacy Policy</a>
             <a href="#">Terms & conditions</a>
@@ -28,7 +28,7 @@ export function FooterComponent() {
             <a href="#">Wholesale Policy</a>
           </div>
           <div className="about">
-            <h1>About us</h1>
+            <h1 className="text-ss">About us</h1>
             <a href="#">Pagination</a>
             <a href="#">Terms & Conditions</a>
             <a href="#">Contact</a>
@@ -36,7 +36,7 @@ export function FooterComponent() {
             <a href="#">Term of use</a>
           </div>
           <div className="categories">
-            <h1>Categories</h1>
+            <h1 className="text-ss">Categories</h1>
             <a href="#">Help Center</a>
             <a href="#">Home page</a>
             <a href="#">Privacy Policy</a>

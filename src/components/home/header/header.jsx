@@ -57,12 +57,13 @@ export function HeaderComponent() {
         ></div>
         <SideContentComponent
           open={carrinhoTabOpen}
+          
           setOpen={setCarrinhoTabOpen}
           isEmpty={{
             message: carrinho.items.length ? "" : "Your cart is empty",
           }}
         >
-          <CarrinhoComponent />
+          <CarrinhoComponent closeCarrinhoTab={() => setCarrinhoTabOpen(false)}/>
         </SideContentComponent>
         <SideContentComponent
           open={favTabOpen}

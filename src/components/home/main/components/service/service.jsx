@@ -22,21 +22,31 @@ export function ServicesComponent() {
 
   return (
     <section className="services" id="about">
+      <div className="services-header">
+        <h2 className="service-main-title">Freshly Baked Happiness</h2>
+
+        <p className="service-subtitle">
+          Discover our handcrafted cakes made with love and premium ingredients.
+        </p>
+      </div>
+
       <div className="services-container">
         {services.map((service, i) => {
           return (
-            <>
-              <div className="image-container" key={`img-${i}`}>
+            <div key={i}>
+              <div className="image-container">
                 <img className="image" src={service.url} alt="service" />
               </div>
+
               <div className="service-description">
-                <h1 className="service-title text-2xl">{service.title}</h1>
+                <h3 className="service-title text-2xl">{service.title}</h3>
                 <span className="service-text text-sm">{service.span}</span>
-                <a className="shop-button text-xs" key={`desc-${i}`} href="#products">
+
+                <a className="shop-button text-xs" href="#products">
                   <span>Shop now</span>
                 </a>
               </div>
-            </>
+            </div>
           );
         })}
       </div>

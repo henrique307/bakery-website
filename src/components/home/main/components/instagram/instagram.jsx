@@ -20,9 +20,9 @@ export function InstagramComponent() {
     <section className="instagram">
       <h1 className="section-title text-3xl">instagram</h1>
       <div className="images">
-        {images.map((image) => {
+        {images.map((image, i) => {
           return (
-            <div className="image-container">
+            <div className="image-container" key={i}>
               <img src={image} alt="instagram-doce" />
               <div className="hover-content">
                 <svg

@@ -3,9 +3,13 @@ import { priceHandler } from "../../../main/components/products/utils";
 import { CarrinhoItemComponent } from "./components/carrinhoItem/carrinhoItem";
 import { Link } from "react-router-dom";
 import "./carrinho.scss";
+import { HashLink } from "react-router-hash-link";
 
-export function CarrinhoComponent() {
+export function CarrinhoComponent({ closeCarrinhoTab }) {
   const carrinho = useSelector((state) => state.carrinho);
+  const btnText = carrinho.items.length ? "Buy now!" : "Add to cart!";
+  const redirect = carrinho.items.length ? "payment" : "#products";
+  const LinkComponent = carrinho.items.length ? Link : HashLink;
 
   return (
     <div className="carrinho-container">
@@ -19,9 +23,9 @@ export function CarrinhoComponent() {
           Total:
           <span className="price">{priceHandler(carrinho.valorTotal)}</span>
         </span>
-        <Link to={"payment"} state={carrinho}>
-          <button className="buy">buy now!</button>
-        </Link>
+        <LinkComponent to={redirect} state={carrinho}>
+          <button onClick={closeCarrinhoTab} className="buy">{btnText}</button>
+        </LinkComponent>
       </div>
     </div>
   );

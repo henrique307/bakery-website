@@ -10,6 +10,7 @@ import "./favItem.scss";
 export function FavItemComponent({ item, index }) {
 
   const dispatch = useDispatch();
+  
   return (
     <div className="item" key={index}>
       <div className="img-container" onClick={() => dispatch(favToggle(item))}>

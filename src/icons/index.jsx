@@ -2,7 +2,7 @@ import "./index.scss";
 
 export function Carrinho({ onClick, qtd }) {
   function handleClick() {
-    onClick();
+    onClick?.();
   }
 
   return (
@@ -29,7 +29,7 @@ export function Carrinho({ onClick, qtd }) {
 
 export function Coracao({ onClick, active }) {
   function handleClick() {
-    onClick();
+    onClick?.();
   }
   return (
     <svg
@@ -71,7 +71,7 @@ export function Lupa() {
 
 export function SideBar({ onClick }) {
   function handleClick() {
-    onClick();
+    onClick?.();
   }
 
   return (
@@ -95,7 +95,7 @@ export function SideBar({ onClick }) {
 
 export function Close({ onClick }) {
   const handleClick = () => {
-    onClick();
+    onClick?.();
   };
   return (
     <svg
@@ -182,7 +182,7 @@ export function TiktokLogo() {
 
 export function Trash({ onClick }) {
   function handleClick() {
-    onClick();
+    onClick?.();
   }
   return (
     <svg
@@ -205,7 +205,7 @@ export function Trash({ onClick }) {
 
 export function SuccessIcon({ onClick }) {
   function handleClick() {
-    onclick();
+    onClick?.();
   }
   return (
     <svg
@@ -226,16 +226,15 @@ export function SuccessIcon({ onClick }) {
   );
 }
 
-export function FailIcon({onClick}) {
-
+export function FailIcon({ onClick }) {
   function handleClick() {
-    onClick()
+    onClick?.();
   }
-  
+
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      onclick={handleClick}
+      onClick={handleClick}
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth={1.5}
